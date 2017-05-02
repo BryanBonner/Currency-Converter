@@ -10,7 +10,7 @@ import UIKit
 
 class PickerViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
     // Mark Properties
-    var pickerData = ["Test", "Test2", "Test3"]
+    var pickerData = ["United States dollar", "Eurso", "Japanese yen", "Pound sterling", "Australian dollar", "Canadian dollar", "Swiss franc", "Chinese yuan", "Swedish krona", "New Zealand dollar", "Mexican Peso", "Singapore dollar", "Hong Kong dollar", "Norwegian krone", "South Korean won", "Turkish Lira", "Russian ruble", "Indian rupee", "Brazilian real", "South African rand"]
     
     @IBOutlet weak var currencyPickerView: UIPickerView!
     
