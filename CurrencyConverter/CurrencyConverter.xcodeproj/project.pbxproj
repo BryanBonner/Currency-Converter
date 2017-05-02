@@ -14,6 +14,7 @@
 		63CC30C41EB53B370024E707 /* ConvertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63CC30C31EB53B370024E707 /* ConvertViewController.swift */; };
 		63CC30C61EB552480024E707 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63CC30C51EB552480024E707 /* HomeView.swift */; };
 		63CC30CC1EB8001B0024E707 /* PickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63CC30CB1EB8001B0024E707 /* PickerViewController.swift */; };
+		63CC30CE1EB8033F0024E707 /* YQL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63CC30CD1EB8033F0024E707 /* YQL.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		63CC30C31EB53B370024E707 /* ConvertViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ConvertViewController.swift; path = ../ConvertViewController.swift; sourceTree = "<group>"; };
 		63CC30C51EB552480024E707 /* HomeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		63CC30CB1EB8001B0024E707 /* PickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PickerViewController.swift; sourceTree = "<group>"; };
+		63CC30CD1EB8033F0024E707 /* YQL.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YQL.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +68,7 @@
 				633427FD1EAEF0A600AFE7C8 /* Info.plist */,
 				63CC30C51EB552480024E707 /* HomeView.swift */,
 				63CC30CB1EB8001B0024E707 /* PickerViewController.swift */,
+				63CC30CD1EB8033F0024E707 /* YQL.swift */,
 			);
 			path = CurrencyConverter;
 			sourceTree = "<group>";
@@ -144,6 +147,7 @@
 			files = (
 				63CC30C61EB552480024E707 /* HomeView.swift in Sources */,
 				633427F21EAEF0A600AFE7C8 /* AppDelegate.swift in Sources */,
+				63CC30CE1EB8033F0024E707 /* YQL.swift in Sources */,
 				63CC30CC1EB8001B0024E707 /* PickerViewController.swift in Sources */,
 				63CC30C41EB53B370024E707 /* ConvertViewController.swift in Sources */,
 			);
