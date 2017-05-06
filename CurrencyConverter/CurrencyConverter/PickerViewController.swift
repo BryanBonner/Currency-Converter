@@ -11,10 +11,9 @@ import UIKit
 class PickerViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
     // Mark Properties
     var pickerData = ["United States dollar", "Eurso", "Japanese yen", "Pound sterling", "Australian dollar", "Canadian dollar", "Swiss franc", "Chinese yuan", "Swedish krona", "New Zealand dollar", "Mexican Peso", "Singapore dollar", "Hong Kong dollar", "Norwegian krone", "South Korean won", "Turkish Lira", "Russian ruble", "Indian rupee", "Brazilian real", "South African rand"]
+    var currentSelection: String = ""
     
     @IBOutlet weak var currencyPickerView: UIPickerView!
-    
-    
     
 
     override func viewDidLoad() {
@@ -29,16 +28,22 @@ class PickerViewController: UIViewController, UIPickerViewDataSource, UIPickerVi
         // Dispose of any resources that can be recreated.
     }
     
+    @IBAction func addToHome(_ sender: Any) {
+        print(currentSelection)
+    }
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        // CODE HERE
         return pickerData.count
     }
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        // CODE HERE
+        
+        currentSelection = pickerData[row]
         return pickerData[row]
+    }
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        
     }
 
     
