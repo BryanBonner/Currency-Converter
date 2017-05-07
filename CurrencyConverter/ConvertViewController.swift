@@ -81,5 +81,7 @@ class ConvertViewController: UIViewController, UITableViewDelegate, UITableViewD
     }
     @IBAction func convertPush(_ sender: UIButton) {
         Data.getCurrencySymbol(home: Data.homeSelection, foreign: Data.foreignSelection)
+        Data.setCurrencyRate(home: Data.homeSelection, foreign: Data.foreignSelection)
+        
     }
 }

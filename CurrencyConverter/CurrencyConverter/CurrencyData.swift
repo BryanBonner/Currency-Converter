@@ -12,13 +12,19 @@ import Foundation
 class CurrencyData {
     //NSObject, NSCoding
     
+    // Dictionary of Currency Symbols - Key: Currency, Value: Currency Symbol
     var currencySymbol: [String: String] = ["United States dollar": "USD", "Euro": "EUR", "Japanese yen": "JPY", "Pound sterling": "GBP", "Australian dollar": "AUD", "Canadian dollar": "CAD", "Swiss franc": "CHF", "Chinese yuan": "CNY", "Swedish krona": "SEK", "New Zealand dollar": "NZD", "Mexican Peso": "MXN", "Singapore dollar": "SGD", "Hong Kong dollar": "HKD", "Norwegian krone": "NOK", "South Korean won": "KRW", "Turkish Lira": "TRY", "Russian ruble": "RUB", "Indian rupee": "INR", "Brazilian real": "BRL", "South African rand": "ZAR"]
+    
+    // Dictionary of Currency Rates - Key: Currency Symbol, Value: Currency Rate retrieved from YQL
+    var currencyRates: [String: Float] = [:]
+    
     
     var price: Double
     var favoriteCurrency: [String]
     var pickerData: [String]
     var homeSelection: String
     var foreignSelection: String
+   
    // var currencyDictionary: [String: [String]]
     
     //init(price: Double, currencyDictionary: [String: [String]]) {
@@ -36,6 +42,16 @@ class CurrencyData {
         let query2 = currencySymbol[foreign]
         print(query1!)
         print(query2!)
+    }
+    func setCurrencyRate(home: String, foreign: String) {
+        let query1 = currencySymbol[home]
+        let query2 = currencySymbol[foreign]
+        let myYQL = YQL()
+        let queryString = "select * from yahoo.finance.xchange where pair in (\"" + query1! + query2! + "\")"
+        myYQL.query(queryString) { jsonDict in
+            let queryDict = jsonDict["query"] as! [String: Any]
+            print(queryDict)
+        }
     }
     
     // MARK: NSCoding
