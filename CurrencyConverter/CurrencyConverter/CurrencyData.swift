@@ -11,6 +11,9 @@ import Foundation
 
 class CurrencyData {
     //NSObject, NSCoding
+    
+    var currencySymbol: [String: String] = ["United States dollar": "USD", "Euro": "EUR", "Japanese yen": "JPY", "Pound sterling": "GBP", "Australian dollar": "AUD", "Canadian dollar": "CAD", "Swiss franc": "CHF", "Chinese yuan": "CNY", "Swedish krona": "SEK", "New Zealand dollar": "NZD", "Mexican Peso": "MXN", "Singapore dollar": "SGD", "Hong Kong dollar": "HKD", "Norwegian krone": "NOK", "South Korean won": "KRW", "Turkish Lira": "TRY", "Russian ruble": "RUB", "Indian rupee": "INR", "Brazilian real": "BRL", "South African rand": "ZAR"]
+    
     var price: Double
     var favoriteCurrency: [String]
     var pickerData: [String]
@@ -23,6 +26,12 @@ class CurrencyData {
         self.favoriteCurrency = favoriteCurrency
         self.pickerData = pickerData
      
+    }
+    func getCurrencySymbol(home: String, foreign: String) {
+        let query1 = currencySymbol[home]
+        let query2 = currencySymbol[foreign]
+        print(query1!)
+        print(query2!)
     }
     
     // MARK: NSCoding
@@ -42,5 +51,4 @@ class CurrencyData {
     static let shared: CurrencyData = CurrencyData(price: 0.0, favoriteCurrency: ["Choose some favorites!"], pickerData: ["United States dollar", "Euro", "Japanese yen", "Pound sterling", "Australian dollar", "Canadian dollar", "Swiss franc", "Chinese yuan", "Swedish krona", "New Zealand dollar", "Mexican Peso", "Singapore dollar", "Hong Kong dollar", "Norwegian krone", "South Korean won", "Turkish Lira", "Russian ruble", "Indian rupee", "Brazilian real", "South African rand"])
     
     //currencyDictionary: "United States Dollar = ["USD", "0.0", "$"])
-    
 }
