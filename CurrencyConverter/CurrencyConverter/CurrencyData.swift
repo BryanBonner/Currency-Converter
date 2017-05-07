@@ -46,12 +46,18 @@ class CurrencyData {
     func setCurrencyRate(home: String, foreign: String) {
         let query1 = currencySymbol[home]
         let query2 = currencySymbol[foreign]
+        
+         //  if (currencyRates.contains(symbol) && lastQueryTime < 1 day
         let myYQL = YQL()
         let queryString = "select * from yahoo.finance.xchange where pair in (\"" + query1! + query2! + "\")"
         myYQL.query(queryString) { jsonDict in
             let queryDict = jsonDict["query"] as! [String: Any]
             print(queryDict)
+            
+           // currencyRates[currencySymbol[home]] = queryDict[rates[0]]
+            // currencyRates[currencySymbol[foreign]] = queryDict[rates[1]]
         }
+        // else return currencyRates[symbol]
     }
     
     // MARK: NSCoding
