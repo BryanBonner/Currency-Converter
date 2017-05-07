@@ -17,14 +17,18 @@ class CurrencyData {
     var price: Double
     var favoriteCurrency: [String]
     var pickerData: [String]
+    var homeSelection: String
+    var foreignSelection: String
    // var currencyDictionary: [String: [String]]
     
     //init(price: Double, currencyDictionary: [String: [String]]) {
-    init(price: Double, favoriteCurrency: [String], pickerData: [String]) {
+    init(price: Double, favoriteCurrency: [String], pickerData: [String], homeSelection: String, foreignSelection: String) {
         self.price = price
       //  self.currencyDictionary = currencyDictionary
         self.favoriteCurrency = favoriteCurrency
         self.pickerData = pickerData
+        self.homeSelection = homeSelection
+        self.foreignSelection = foreignSelection
      
     }
     func getCurrencySymbol(home: String, foreign: String) {
@@ -48,7 +52,7 @@ class CurrencyData {
 //    }
     
     // Singleton Pattern
-    static let shared: CurrencyData = CurrencyData(price: 0.0, favoriteCurrency: ["Choose some favorites!"], pickerData: ["United States dollar", "Euro", "Japanese yen", "Pound sterling", "Australian dollar", "Canadian dollar", "Swiss franc", "Chinese yuan", "Swedish krona", "New Zealand dollar", "Mexican Peso", "Singapore dollar", "Hong Kong dollar", "Norwegian krone", "South Korean won", "Turkish Lira", "Russian ruble", "Indian rupee", "Brazilian real", "South African rand"])
+    static let shared: CurrencyData = CurrencyData(price: 0.0, favoriteCurrency: ["Choose some favorites!"], pickerData: ["United States dollar", "Euro", "Japanese yen", "Pound sterling", "Australian dollar", "Canadian dollar", "Swiss franc", "Chinese yuan", "Swedish krona", "New Zealand dollar", "Mexican Peso", "Singapore dollar", "Hong Kong dollar", "Norwegian krone", "South Korean won", "Turkish Lira", "Russian ruble", "Indian rupee", "Brazilian real", "South African rand"], homeSelection: "", foreignSelection: "")
     
     //currencyDictionary: "United States Dollar = ["USD", "0.0", "$"])
 }

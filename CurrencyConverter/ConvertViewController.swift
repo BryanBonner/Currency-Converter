@@ -11,7 +11,7 @@ import UIKit
 class ConvertViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
   
-    var homeSelection: String = ""
+    var currentSelection: String = ""
     var Data: CurrencyData = CurrencyData.shared
     
     @IBOutlet weak var homeLabel: UILabel!
@@ -38,14 +38,14 @@ class ConvertViewController: UIViewController, UITableViewDelegate, UITableViewD
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell(style: UITableViewCellStyle.default, reuseIdentifier: "cell")
         cell.textLabel?.text = Data.favoriteCurrency[indexPath.row]
-        homeSelection = (cell.textLabel?.text)!
+        currentSelection = (cell.textLabel?.text)!
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let indexPath = tableView.indexPathForSelectedRow
         let currentCell = tableView.cellForRow(at: indexPath!)! as UITableViewCell
-        homeSelection = currentCell.textLabel!.text!
+        currentSelection = currentCell.textLabel!.text!
     }
     
     
@@ -61,16 +61,25 @@ class ConvertViewController: UIViewController, UITableViewDelegate, UITableViewD
         }
     }
     @IBAction func setHomePush(_ sender: UIButton) {
-        homeLabel.text = homeSelection
-        
-        setForeignButton.isEnabled = true
+        homeLabel.text = currentSelection
+        Data.homeSelection = currentSelection
+        setHomeButton.isHidden = true
+        setHomeButton.isEnabled = false
         setForeignButton.isHidden = false
-        print(homeSelection)
+        setForeignButton.isEnabled = true
+        print(Data.homeSelection)
     }
     @IBAction func setForeignPush(_ sender: UIButton) {
-        foreignLabel.text = homeSelection
+        Data.foreignSelection = currentSelection
+        foreignLabel.text = currentSelection
+        
+        setForeignButton.isEnabled = false
+        setForeignButton.isHidden = true
         setHomeButton.isEnabled = true
         setHomeButton.isHidden = false
-        print(homeSelection)
+        print(Data.foreignSelection)
+    }
+    @IBAction func convertPush(_ sender: UIButton) {
+        Data.getCurrencySymbol(home: Data.homeSelection, foreign: Data.foreignSelection)
     }
 }

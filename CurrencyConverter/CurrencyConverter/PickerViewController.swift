@@ -33,11 +33,12 @@ class PickerViewController: UIViewController, UIPickerViewDataSource, UIPickerVi
     @IBAction func addToHome(_ sender: Any) {
         Data.favoriteCurrency.append(currentSelection)
         if Data.favoriteCurrency[0] == "Choose some favorites!" {
-            Data.pickerData.remove(at: 0)
+          Data.favoriteCurrency.remove(at: 0)
         }
         if let targetIndex = Data.pickerData.index(of: currentSelection) {
             Data.pickerData.remove(at: targetIndex)
         }
+       
         print(currentSelection)
     }
     func numberOfComponents(in pickerView: UIPickerView) -> Int {

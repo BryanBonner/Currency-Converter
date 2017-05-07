@@ -12,6 +12,7 @@
         <!--Navigation Controller-->
         <scene sceneID="KK7-Zj-gtm">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="EsK-Vh-WNj" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController id="4a1-qb-ah2" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="RTH-1d-2KH">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -21,7 +22,6 @@
                         <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="KNr-9q-XVc"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="EsK-Vh-WNj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1395" y="-36"/>
         </scene>
@@ -41,6 +41,9 @@
                                 <rect key="frame" x="148" y="552" width="78" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Convert"/>
+                                <connections>
+                                    <action selector="convertPush:" destination="BYZ-38-t0r" eventType="touchUpInside" id="enp-9z-rXv"/>
+                                </connections>
                             </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="TaT-7z-PCq">
                                 <rect key="frame" x="88" y="496" width="199" height="30"/>
@@ -71,11 +74,40 @@
                                 </connections>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LrR-VN-nq1">
-                                <rect key="frame" x="153" y="465" width="68" height="30"/>
+                                <rect key="frame" x="159" y="465" width="68" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Set Home"/>
                                 <connections>
-                                    <action selector="setHomeButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="9Y3-hT-C1i"/>
+                                    <action selector="setHomePush:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Dse-Bz-f0c"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Home" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="29D-Ux-MAl">
+                                <rect key="frame" x="8" y="626" width="156" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="-&gt;" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RMW-sh-Qiu">
+                                <rect key="frame" x="172" y="626" width="19" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Foreign" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XSS-Gf-qoj">
+                                <rect key="frame" x="205" y="626" width="165" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a59-Hd-Tx6">
+                                <rect key="frame" x="159" y="465" width="79" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Set Foreign"/>
+                                <connections>
+                                    <action selector="setForeignPush:" destination="BYZ-38-t0r" eventType="touchUpInside" id="DGZ-IJ-3Vs"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -86,9 +118,15 @@
                         </connections>
                     </view>
                     <navigationItem key="navigationItem" title="Convert" id="0xX-T4-psM"/>
+                    <connections>
+                        <outlet property="foreignLabel" destination="XSS-Gf-qoj" id="zdE-2Z-mZO"/>
+                        <outlet property="homeLabel" destination="29D-Ux-MAl" id="gtj-JT-9Ig"/>
+                        <outlet property="setForeignButton" destination="a59-Hd-Tx6" id="3PG-nq-1zi"/>
+                        <outlet property="setHomeButton" destination="LrR-VN-nq1" id="uvI-zC-Juy"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
-                <swipeGestureRecognizer direction="right" id="iTz-Fv-XdH">
+                <swipeGestureRecognizer direction="left" id="iTz-Fv-XdH">
                     <connections>
                         <segue destination="gum-hg-1sd" kind="show" id="leS-sQ-p2D"/>
                     </connections>
@@ -96,7 +134,7 @@
             </objects>
             <point key="canvasLocation" x="-695.20000000000005" y="-45.42728635682159"/>
         </scene>
-        <!--Picker View Controller-->
+        <!--Convert-->
         <scene sceneID="onW-bN-3ah">
             <objects>
                 <viewController id="gum-hg-1sd" customClass="PickerViewController" customModule="CurrencyConverter" customModuleProvider="target" sceneMemberID="viewController">
@@ -113,7 +151,7 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                             </pickerView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ivW-29-hJ5">
-                                <rect key="frame" x="46" y="407" width="283" height="48"/>
+                                <rect key="frame" x="46" y="435" width="283" height="48"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="23"/>
                                 <state key="normal" title="Add to Favorites">
@@ -123,12 +161,6 @@
                                     <action selector="addToHome:" destination="gum-hg-1sd" eventType="touchUpInside" id="gnK-iK-muL"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="q2H-ms-inF">
-                                <rect key="frame" x="37" y="480" width="301" height="48"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="23"/>
-                                <state key="normal" title="Add to Foreign Favorites"/>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <gestureRecognizers/>
@@ -136,12 +168,13 @@
                             <outletCollection property="gestureRecognizers" destination="dg8-uN-pjf" appends="YES" id="jh6-pH-VB6"/>
                         </connections>
                     </view>
+                    <navigationItem key="navigationItem" title="Convert" id="eed-LH-ocd"/>
                     <connections>
                         <outlet property="currencyPickerView" destination="cAI-7r-mQX" id="N0u-dh-r3x"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Lna-Rt-OM2" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <swipeGestureRecognizer direction="left" id="dg8-uN-pjf">
+                <swipeGestureRecognizer direction="right" id="dg8-uN-pjf">
                     <connections>
                         <segue destination="BYZ-38-t0r" kind="show" id="IRd-VK-g6M"/>
                     </connections>
@@ -151,6 +184,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="IRd-VK-g6M"/>
+        <segue reference="KNr-9q-XVc"/>
     </inferredMetricsTieBreakers>
 </document>
