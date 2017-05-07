@@ -13,7 +13,7 @@ class CurrencyData {
     //NSObject, NSCoding
     
     // Dictionary of Currency Symbols - Key: Currency, Value: Currency Symbol
-    var currencySymbol: [String: String] = ["United States dollar": "USD", "Euro": "EUR", "Japanese yen": "JPY", "Pound sterling": "GBP", "Australian dollar": "AUD", "Canadian dollar": "CAD", "Swiss franc": "CHF", "Chinese yuan": "CNY", "Swedish krona": "SEK", "New Zealand dollar": "NZD", "Mexican Peso": "MXN", "Singapore dollar": "SGD", "Hong Kong dollar": "HKD", "Norwegian krone": "NOK", "South Korean won": "KRW", "Turkish Lira": "TRY", "Russian ruble": "RUB", "Indian rupee": "INR", "Brazilian real": "BRL", "South African rand": "ZAR"]
+    var currencySymbol: [String: [String]] = ["United States dollar": ["USD", "$"], "Euro": ["EUR", "€"], "Japanese yen": ["JPY", "¥"], "Pound sterling": ["GBP", "£"], "Australian dollar": ["AUD", "$"], "Canadian dollar": ["CAD", "$"], "Swiss franc": ["CHF", "Fr"], "Chinese yuan": ["CNY", "¥"], "Swedish krona": ["SEK", "kr"], "New Zealand dollar": ["NZD", "$"], "Mexican Peso": ["MXN", "$"], "Singapore dollar": ["SGD", "$"], "Hong Kong dollar": ["HKD", "$"], "Norwegian krone": ["NOK", "kr"], "South Korean won": ["KRW", "₩"],"Turkish Lira": ["TRY", "₺"], "Russian ruble": ["RUB", "₽"], "Indian rupee": ["INR", "₹"], "Brazilian real": ["BRL", "R$"], "South African rand": ["ZAR", "R"]]
     
     // Dictionary of Currency Rates - Key: Currency Symbol, Value: Currency Rate retrieved from YQL
     var currencyRates: [String: Float] = [:]
@@ -24,7 +24,8 @@ class CurrencyData {
     var pickerData: [String]
     var homeSelection: String
     var foreignSelection: String
-   
+    //var lastQueryTime: Int
+    
    // var currencyDictionary: [String: [String]]
     
     //init(price: Double, currencyDictionary: [String: [String]]) {
