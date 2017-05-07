@@ -31,10 +31,13 @@ class PickerViewController: UIViewController, UIPickerViewDataSource, UIPickerVi
     }
     
     @IBAction func addToHome(_ sender: Any) {
-        //Data.favoriteCurrency.append(currentSelection)
-        //for favoriteCurrency in Data.favoriteCurrency {
-         //   print(favoriteCurrency)
-       // }
+        Data.favoriteCurrency.append(currentSelection)
+        if Data.pickerData[0] == "Choose some favorites!" {
+            Data.pickerData.remove(at: 0)
+        }
+        if let targetIndex = Data.pickerData.index(of: currentSelection) {
+            Data.pickerData.remove(at: targetIndex)
+        }
         print(currentSelection)
     }
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
@@ -43,13 +46,9 @@ class PickerViewController: UIViewController, UIPickerViewDataSource, UIPickerVi
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         return Data.pickerData.count
     }
-//    func pickerView(_ pickerView: UIPickerView, favoriteCurrencyForRow row: Int, forComponent component: Int, dd: CurrencyData) -> String? {
-//        print(dd.pickerData)
-//        currentSelection = Data.pickerData[row]
-//        
-//        return Data.pickerData[row]
-//    }
+
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String?{
+        currentSelection = Data.pickerData[row]
         return Data.pickerData[row]
     }
 
