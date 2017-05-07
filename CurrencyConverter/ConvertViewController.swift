@@ -14,6 +14,11 @@ class ConvertViewController: UIViewController, UITableViewDelegate, UITableViewD
     var homeSelection: String = ""
     var Data: CurrencyData = CurrencyData.shared
     
+    @IBOutlet weak var homeLabel: UILabel!
+    @IBOutlet weak var foreignLabel: UILabel!
+    @IBOutlet weak var setForeignButton: UIButton!
+    @IBOutlet weak var setHomeButton: UIButton!
+   
     override func viewDidLoad() {
         super.viewDidLoad()
         Data = CurrencyData.shared
@@ -49,18 +54,23 @@ class ConvertViewController: UIViewController, UITableViewDelegate, UITableViewD
     //    Found from www.ioscreator.com/tutorials/delete-rows-table-view-ios8-swift
     public func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == UITableViewCellEditingStyle.delete {
-            Data.pickerData.append(Data.favoriteCurrency[indexPath.row])
+            //Data.pickerData.append(Data.favoriteCurrency[indexPath.row])
             Data.favoriteCurrency.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: UITableViewRowAnimation.automatic)
             
         }
     }
-
-
-    @IBAction func setHomeButton(_ sender: Any) {
-        for favoriteCurrency in Data.favoriteCurrency {
-            print(favoriteCurrency)
-        }
+    @IBAction func setHomePush(_ sender: UIButton) {
+        homeLabel.text = homeSelection
+        
+        setForeignButton.isEnabled = true
+        setForeignButton.isHidden = false
+        print(homeSelection)
+    }
+    @IBAction func setForeignPush(_ sender: UIButton) {
+        foreignLabel.text = homeSelection
+        setHomeButton.isEnabled = true
+        setHomeButton.isHidden = false
         print(homeSelection)
     }
 }
