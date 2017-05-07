@@ -28,13 +28,13 @@ class ConvertViewController: UIViewController, UITableViewDelegate, UITableViewD
     }
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // Number of rows equal to number in the list
-        return list.title.count
+        return list.favoriteCurrency.count
     }
     
     
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell(style: UITableViewCellStyle.default, reuseIdentifier: "cell")
-        cell.textLabel?.text = list.title[indexPath.row]
+        cell.textLabel?.text = list.favoriteCurrency[indexPath.row]
         homeSelection = (cell.textLabel?.text)!
         return cell
     }
@@ -51,7 +51,7 @@ class ConvertViewController: UIViewController, UITableViewDelegate, UITableViewD
     //    Found from www.ioscreator.com/tutorials/delete-rows-table-view-ios8-swift
     public func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == UITableViewCellEditingStyle.delete {
-            list.title.remove(at: indexPath.row)
+            list.favoriteCurrency.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: UITableViewRowAnimation.automatic)
             
         }
@@ -59,8 +59,8 @@ class ConvertViewController: UIViewController, UITableViewDelegate, UITableViewD
 
 
     @IBAction func setHomeButton(_ sender: Any) {
-        for title in list.title {
-            print(title)
+        for favoriteCurrency in list.favoriteCurrency {
+            print(favoriteCurrency)
         }
         print(homeSelection)
     }

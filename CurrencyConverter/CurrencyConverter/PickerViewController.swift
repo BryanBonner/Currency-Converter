@@ -10,8 +10,8 @@ import UIKit
 
 class PickerViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
     
-    let Data: CurrencyData = CurrencyData.shared
-    var pickerData = ["United States dollar", "Eurso", "Japanese yen", "Pound sterling", "Australian dollar", "Canadian dollar", "Swiss franc", "Chinese yuan", "Swedish krona", "New Zealand dollar", "Mexican Peso", "Singapore dollar", "Hong Kong dollar", "Norwegian krone", "South Korean won", "Turkish Lira", "Russian ruble", "Indian rupee", "Brazilian real", "South African rand"]
+    var Data: CurrencyData = CurrencyData.shared
+    
     var currentSelection: String = ""
     
     @IBOutlet weak var currencyPickerView: UIPickerView!
@@ -19,9 +19,10 @@ class PickerViewController: UIViewController, UIPickerViewDataSource, UIPickerVi
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        //let Data: CurrencyData = CurrencyData.shared
         currencyPickerView.dataSource = self
         currencyPickerView.delegate = self
+        Data = CurrencyData.shared
     }
 
     override func didReceiveMemoryWarning() {
@@ -30,28 +31,27 @@ class PickerViewController: UIViewController, UIPickerViewDataSource, UIPickerVi
     }
     
     @IBAction func addToHome(_ sender: Any) {
-        Data.title.append(currentSelection)
-        for title in Data.title {
-            print(title)
-        }
+        //Data.favoriteCurrency.append(currentSelection)
+        //for favoriteCurrency in Data.favoriteCurrency {
+         //   print(favoriteCurrency)
+       // }
         print(currentSelection)
     }
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return pickerData.count
+        return Data.pickerData.count
     }
-    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        
-        currentSelection = pickerData[row]
-        
-        return pickerData[row]
-    }
-    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        
+//    func pickerView(_ pickerView: UIPickerView, favoriteCurrencyForRow row: Int, forComponent component: Int, dd: CurrencyData) -> String? {
+//        print(dd.pickerData)
+//        currentSelection = Data.pickerData[row]
+//        
+//        return Data.pickerData[row]
+//    }
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String?{
+        return Data.pickerData[row]
     }
 
-    
 
 }
