@@ -2,8 +2,7 @@
 //  PickerViewController.swift
 //  CurrencyConverter
 //
-//  Created by CampusUser on 5/1/17.
-//  Copyright © 2017 CPSC411. All rights reserved.
+//  Created by Bryan Bonner
 //
 
 import UIKit

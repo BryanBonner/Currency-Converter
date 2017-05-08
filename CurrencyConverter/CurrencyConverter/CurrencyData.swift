@@ -2,7 +2,7 @@
 //  CurrencyData.swift
 //  CurrencyConverter
 //
-//  Created by Bryan Bonner on 4/13/17.
+//  Created by Bryan Bonner
 //  CPSC 411 - Assignment 4
 //
 
