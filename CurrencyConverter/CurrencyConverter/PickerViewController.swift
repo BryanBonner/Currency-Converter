@@ -15,11 +15,12 @@ class PickerViewController: UIViewController, UIPickerViewDataSource, UIPickerVi
     var currentSelection: String = ""
     
     @IBOutlet weak var currencyPickerView: UIPickerView!
+    @IBOutlet weak var favoriteAddedLabel: UILabel!
     
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        //let Data: CurrencyData = CurrencyData.shared
+        navigationItem.hidesBackButton = true
         currencyPickerView.dataSource = self
         currencyPickerView.delegate = self
         Data = CurrencyData.shared
@@ -38,6 +39,7 @@ class PickerViewController: UIViewController, UIPickerViewDataSource, UIPickerVi
         if let targetIndex = Data.pickerData.index(of: currentSelection) {
             Data.pickerData.remove(at: targetIndex)
         }
+        favoriteAddedLabel.text = currentSelection + " added!"
        
         print(currentSelection)
     }

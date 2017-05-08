@@ -15,6 +15,7 @@
 		63CC30CC1EB8001B0024E707 /* PickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63CC30CB1EB8001B0024E707 /* PickerViewController.swift */; };
 		63CC30CE1EB8033F0024E707 /* YQL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63CC30CD1EB8033F0024E707 /* YQL.swift */; };
 		63CC30D11EB807940024E707 /* CurrencyData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63CC30D01EB807940024E707 /* CurrencyData.swift */; };
+		63CC30FF1EBFEF4F0024E707 /* Favorite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63CC30FE1EBFEF4F0024E707 /* Favorite.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		63CC30CB1EB8001B0024E707 /* PickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PickerViewController.swift; sourceTree = "<group>"; };
 		63CC30CD1EB8033F0024E707 /* YQL.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YQL.swift; sourceTree = "<group>"; };
 		63CC30D01EB807940024E707 /* CurrencyData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrencyData.swift; sourceTree = "<group>"; };
+		63CC30FE1EBFEF4F0024E707 /* Favorite.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Favorite.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,6 +79,7 @@
 			isa = PBXGroup;
 			children = (
 				63CC30D01EB807940024E707 /* CurrencyData.swift */,
+				63CC30FE1EBFEF4F0024E707 /* Favorite.swift */,
 			);
 			name = model;
 			sourceTree = "<group>";
@@ -156,6 +159,7 @@
 				63CC30D11EB807940024E707 /* CurrencyData.swift in Sources */,
 				633427F21EAEF0A600AFE7C8 /* AppDelegate.swift in Sources */,
 				63CC30CE1EB8033F0024E707 /* YQL.swift in Sources */,
+				63CC30FF1EBFEF4F0024E707 /* Favorite.swift in Sources */,
 				63CC30CC1EB8001B0024E707 /* PickerViewController.swift in Sources */,
 				63CC30C41EB53B370024E707 /* ConvertViewController.swift in Sources */,
 			);
