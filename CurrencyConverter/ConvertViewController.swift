@@ -10,19 +10,28 @@ import UIKit
 
 class ConvertViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
-  
+    // Users current selection
     var currentSelection: String = ""
+    
+    // Singleton instance
     var Data: CurrencyData = CurrencyData.shared
+    
+    // Favorite currency to store in archiver
     var FavoriteData = [Favorite]()
+    
+    // Safe recommended path - referenced from youtuber "Awesome Tuts" (awesometuts.com)
     var filePath: String {
         let manager = FileManager.default
         let url = manager.urls(for: .documentDirectory, in: .userDomainMask).first
         return url!.appendingPathComponent("FavoriteData").path
     }
+    
+    // Saves data to the above file path as an array of favoriteCurrency - referenced awesometuts.com
     func saveData(favoriteCurrency: Favorite) {
         FavoriteData.append(favoriteCurrency)
         NSKeyedArchiver.archiveRootObject(FavoriteData, toFile: filePath)
     }
+    // Load data on startup from file path - awesometuts.com
     func loadData() {
         if let ourData = NSKeyedUnarchiver.unarchiveObject(withFile: filePath) as? [Favorite] {
             FavoriteData = ourData
@@ -37,12 +46,8 @@ class ConvertViewController: UIViewController, UITableViewDelegate, UITableViewD
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.hidesBackButton = true
-        Data = CurrencyData.shared
-        
-        // Create path where we are going to store favorites
-        
+        Data = CurrencyData.shared //Get shared instance everytime user swipes back to the convert view
     }
-
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -60,6 +65,7 @@ class ConvertViewController: UIViewController, UITableViewDelegate, UITableViewD
         return cell
     }
     
+    // Set current selection string to the current cell the user has selected
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let indexPath = tableView.indexPathForSelectedRow
         let currentCell = tableView.cellForRow(at: indexPath!)! as UITableViewCell
@@ -76,7 +82,7 @@ class ConvertViewController: UIViewController, UITableViewDelegate, UITableViewD
             
         }
     }
-    // Set home buton when pressed - sets the home selection to the current selection, changes the home label to the currency name, hides the home button and shows the "add foreign" button
+    // Set home buton when pressed - sets the home selection to the current home currency symbol and current selection, changes the home label to the currency name, hides the home button and shows the "add foreign" button
     @IBAction func setHomePush(_ sender: UIButton) {
         homeLabel.text = Data.getCurrencyISO(target: Data.foreignSelection) + currentSelection
         Data.homeSelection = currentSelection
@@ -100,7 +106,7 @@ class ConvertViewController: UIViewController, UITableViewDelegate, UITableViewD
         setHomeButton.isHidden = false
         print(Data.foreignSelection)
     }
-    // Convert is pressed - 
+    // Convert is pressed - right now just prints the value from the dictionary in CurrencyData, rate is currently not working
     @IBAction func convertPush(_ sender: UIButton) {
         //Data.getCurrencyISO(target: Data.homeSelection)
         Data.getCurrencySymbol(home: Data.homeSelection, foreign: Data.foreignSelection)

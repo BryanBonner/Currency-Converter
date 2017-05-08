@@ -2,16 +2,14 @@
 //  Favorite.swift
 //  CurrencyConverter
 //
-//  Created by CampusUser on 5/7/17.
-//  Copyright © 2017 CPSC411. All rights reserved.
-//
+//  Bryan Bonner
+//  Referenced from YouTuber "Awesome Tuts"
 
 import Foundation
 
 class Favorite: NSObject, NSCoding {
     
     var favoriteCurrency = ""
-    
     
     required init(coder decoder: NSCoder) {
         if let favoriteCurrencyObj = decoder.decodeObject(forKey: favoriteCurrency) as? String {
@@ -22,8 +20,4 @@ class Favorite: NSObject, NSCoding {
     func encode(with coder: NSCoder) {
         coder.encode(favoriteCurrency, forKey: favoriteCurrency)
     }
-    
- 
-    
-    
 }

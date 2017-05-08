@@ -31,6 +31,10 @@ class PickerViewController: UIViewController, UIPickerViewDataSource, UIPickerVi
         // Dispose of any resources that can be recreated.
     }
     
+    // Adds selected currency from view picker to the user's favorite currency list.
+    //    Removes the default "Choose from favorites!" seen on the ConvertView screen,
+    //       Removes the data from the picker view to avoid duplicate adds to favorite
+    //           Displays a confirmation that the selected currency was added
     @IBAction func addToHome(_ sender: Any) {
         Data.favoriteCurrency.append(currentSelection)
         if Data.favoriteCurrency[0] == "Choose some favorites!" {
@@ -54,6 +58,4 @@ class PickerViewController: UIViewController, UIPickerViewDataSource, UIPickerVi
         currentSelection = Data.pickerData[row]
         return Data.pickerData[row]
     }
-
-
 }
