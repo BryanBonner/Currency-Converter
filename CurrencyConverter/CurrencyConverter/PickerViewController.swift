@@ -39,9 +39,9 @@ class PickerViewController: UIViewController, UIPickerViewDataSource, UIPickerVi
         if Data.favoriteCurrency[0] == "Choose some favorites!" {
           Data.favoriteCurrency.remove(at: 0)
         }
-        if let targetIndex = Data.pickerData.index(of: currentSelection) {
-            Data.pickerData.remove(at: targetIndex)
-        }
+      //  if let targetIndex = Data.pickerData.index(of: currentSelection) {
+        //    Data.pickerData.remove(at: targetIndex)
+       // }
         favoriteAddedLabel.text = currentSelection + " added!"
        
         print(currentSelection)

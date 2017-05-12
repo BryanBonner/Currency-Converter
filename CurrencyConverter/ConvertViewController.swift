@@ -7,10 +7,13 @@
 
 import UIKit
 
-class ConvertViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class ConvertViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate {
     
     // Users current selection
     var currentSelection: String = ""
+    
+    // Currency to convert
+    var currencyAmount: String = ""
     
     // Singleton instance
     var Data: CurrencyData = CurrencyData.shared
@@ -41,17 +44,33 @@ class ConvertViewController: UIViewController, UITableViewDelegate, UITableViewD
     @IBOutlet weak var foreignLabel: UILabel!
     @IBOutlet weak var setForeignButton: UIButton!
     @IBOutlet weak var setHomeButton: UIButton!
+    @IBOutlet weak var currencyTextField: UITextField!
    
+    @IBOutlet weak var resultLabel: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.hidesBackButton = true
         Data = CurrencyData.shared //Get shared instance everytime user swipes back to the convert view
+        currencyTextField.delegate = self
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
     
+    //MARK: UITextFieldDelegate
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        // Hide the keyboard
+        textField.resignFirstResponder()
+        
+        return true
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        currencyAmount = textField.text!
+    }
+    
+    //MARK: UITableView
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // Number of rows equal to number in the Data
         return Data.favoriteCurrency.count
@@ -83,12 +102,12 @@ class ConvertViewController: UIViewController, UITableViewDelegate, UITableViewD
     }
     // Set home buton when pressed - sets the home selection to the current home currency symbol and current selection, changes the home label to the currency name, hides the home button and shows the "add foreign" button
     @IBAction func setHomePush(_ sender: UIButton) {
-        homeLabel.text = Data.getCurrencyISO(target: Data.foreignSelection) + currentSelection
         Data.homeSelection = currentSelection
+        homeLabel.text = Data.getCurrencyISO(target: Data.homeSelection) + currentSelection
         
-//        let newFavorite = Favorite(coder: currentSelection)
-//        saveData(newFavorite)
-//        
+        //let newFavorite = Favorite(coder: currentSelection)
+        //saveData(newFavorite)
+       
         setHomeButton.isHidden = true
         setHomeButton.isEnabled = false
         setForeignButton.isHidden = false
@@ -108,8 +127,17 @@ class ConvertViewController: UIViewController, UITableViewDelegate, UITableViewD
     // Convert is pressed - right now just prints the value from the dictionary in CurrencyData, rate is currently not working
     @IBAction func convertPush(_ sender: UIButton) {
         //Data.getCurrencyISO(target: Data.homeSelection)
-        Data.getCurrencySymbol(home: Data.homeSelection, foreign: Data.foreignSelection)
-        Data.setCurrencyRate(home: Data.homeSelection, foreign: Data.foreignSelection)
+       // Data.getCurrencySymbol(home: Data.homeSelection, foreign: Data.foreignSelection)
+        
+        // Get the rate from YQL as a float
+        let rate = Data.setCurrencyRate(home: Data.homeSelection, foreign: Data.foreignSelection)
+        
+        // Multiple rate by currencyAmount - the amount the user input
+        let result = rate * (currencyAmount as NSString).floatValue
+        
+        // Display result as a string
+        resultLabel.text = String(result)
         
     }
+    
 }

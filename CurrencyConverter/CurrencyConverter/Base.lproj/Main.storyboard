@@ -117,6 +117,13 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="flY-io-aGY">
+                                <rect key="frame" x="57" y="565" width="260" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Home" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="29D-Ux-MAl">
                                 <rect key="frame" x="16" y="603" width="156" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -133,8 +140,10 @@
                     </view>
                     <navigationItem key="navigationItem" title="Convert" id="0xX-T4-psM"/>
                     <connections>
+                        <outlet property="currencyTextField" destination="TaT-7z-PCq" id="DeI-ge-Ztm"/>
                         <outlet property="foreignLabel" destination="XSS-Gf-qoj" id="zdE-2Z-mZO"/>
                         <outlet property="homeLabel" destination="29D-Ux-MAl" id="gtj-JT-9Ig"/>
+                        <outlet property="resultLabel" destination="flY-io-aGY" id="utG-5z-AX8"/>
                         <outlet property="setForeignButton" destination="a59-Hd-Tx6" id="3PG-nq-1zi"/>
                         <outlet property="setHomeButton" destination="LrR-VN-nq1" id="uvI-zC-Juy"/>
                     </connections>

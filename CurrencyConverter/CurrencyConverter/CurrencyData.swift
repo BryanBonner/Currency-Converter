@@ -35,7 +35,7 @@ class CurrencyData {
         self.rate = rate
      
     }
-    func getCurrencyISO(target: String) -> String{
+    func getCurrencyISO(target: String) -> String {
         return (currencySymbol[target]![1])
     }
     func getCurrencySymbol(home: String, foreign: String) {
@@ -44,21 +44,23 @@ class CurrencyData {
         print(query1!)
         print(query2!)
     }
-    func setCurrencyRate(home: String, foreign: String) {
+    func setCurrencyRate(home: String, foreign: String) -> Float{
         let query1 = currencySymbol[home]?[0]
         let query2 = currencySymbol[foreign]?[0]
         
-         //  if (currencyRates.contains(symbol) && lastQueryTime < 1 day
         let myYQL = YQL()
         let queryString = "select * from yahoo.finance.xchange where pair in (\"" + query1! + query2! + "\")"
         myYQL.query(queryString) { jsonDict in
             let queryDict = jsonDict["query"] as! [String: Any]
-            print(queryDict)
-            
-            // currencyRates[currencySymbol[home]] = queryDict[rates][0]
-            // currencyRates[currencySymbol[foreign]] = queryDict[rates][1]
+            let resultsDict = queryDict["results"] as! [String: Any]
+            let rateDict = resultsDict["rate"] as! [String: Any]
+          
+            print(rateDict["Rate"] as Any)
+            let rateReturned = rateDict["Rate"] as! Float
+            let queryFloat = (query1! as NSString).floatValue
+            return rateReturned * queryFloat
         }
-        // else return currencyRates[symbol]
+        return 0.0
     }
     
     // Singleton Pattern
